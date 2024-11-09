@@ -116,9 +116,9 @@ header {
 
 .circle-container {
     justify-content: center;
+    flex-wrap: wrap;
     display: flex;
     gap: 2em;
-    scroll-behavior: smooth;
     padding: 2em;
     overflow-x: auto;
 }
