@@ -78,6 +78,7 @@ header {
     .card {
         position: relative;
         width: 100%;
+        max-width: 100px;
         height: auto;
         border: 1px solid #ddd;
         border-radius: 5px;
@@ -86,7 +87,6 @@ header {
         background-color: white;
         cursor: pointer;
         transition: transform 0.2s;
-        padding-bottom: 1em;
     }
 }
 
@@ -107,7 +107,6 @@ header {
 
 .why-choose-us h2 {
     font-size: 2em;
-    margin-bottom: 1em;
 }
 
 .icon img {
