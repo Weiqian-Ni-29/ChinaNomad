@@ -28,7 +28,7 @@ header {
 
 .card {
     position: relative;
-    width: 250px;
+    width: 15%;
     border: 1px solid #ddd;
     border-radius: 5px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
@@ -131,8 +131,10 @@ header {
 }
 
 .circle {
-    width: 200px;
-    height: 200px;
+    width: 80%;
+    max-width: 150px;
+    height: auto;
+    margin: 0 auto;
     overflow: hidden;
     border-radius: 50%;
     display: flex;
@@ -164,4 +166,24 @@ footer a {
     color: #4CAF50;
     text-decoration: none;
     margin: 0 10px;
+}
+
+/* 桌面设备 (宽度大于 768px) */
+@media (min-width: 768px) {
+    .circle-container {
+        display: flex;
+        justify-content: center;
+        gap: 2em;
+        overflow-x: auto;
+    }
+}
+
+/* 移动设备 (宽度小于等于 768px) */
+@media (max-width: 768px) {
+    .circle-container {
+        display: grid;
+        grid-template-columns: 1fr 1fr; /* 使用网格布局，每行 2 个项目 */
+        gap: 1em;
+        overflow-x: hidden;
+    }
 }
