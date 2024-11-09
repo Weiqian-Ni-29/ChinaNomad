@@ -204,3 +204,33 @@ footer a {
         height: 80px;
     }
 }
+
+/* 平板设备 (宽度大于 768px 小于 1024px) */
+@media (min-width: 768px) and (max-width: 1023px) {
+    .cards-container {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 1em;
+        padding: 1em;
+        justify-content: center;
+    }
+    
+    .card {
+        width: 30%; /* 每行约 3 个卡片 */
+    }
+}
+
+/* 移动设备 (宽度小于等于 768px) */
+@media (max-width: 768px) {
+    .cards-container {
+        display: grid;
+        grid-template-columns: 1fr 1fr; /* 使用网格布局，每行 2 个卡片 */
+        gap: 1em;
+        padding: 1em;
+    }
+
+    .card {
+        width: 100%; /* 占满网格单元宽度 */
+        padding: 1em;
+    }
+}
