@@ -120,6 +120,7 @@ header {
 .card h3 {
     font-size: 1.2em;
     margin: 0.5em 0;
+    padding: 1em;
 }
 
 .card p {
@@ -127,6 +128,7 @@ header {
     font-size: 0.9em;
     margin: 0.5em 0 1em;
     line-height: 1.5;
+    padding: 1em;
 }
 
 .card a {
