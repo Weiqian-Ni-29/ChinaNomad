@@ -182,8 +182,25 @@ footer a {
 @media (max-width: 768px) {
     .circle-container {
         display: grid;
-        grid-template-columns: 1fr 1fr; /* 使用网格布局，每行 2 个项目 */
+        grid-template-columns: repeat(2, 1fr); /* 明确每行两个项目 */
         gap: 1em;
-        overflow-x: hidden;
+        overflow-x: hidden; /* 防止内容水平滚动 */
+        width: 100%;
+        padding: 1em;
+        box-sizing: border-box;
+    }
+
+    .circle-link {
+        width: 100%; /* 确保项目宽度适应网格单元 */
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-decoration: none;
+        color: #333;
+    }
+
+    .circle {
+        width: 80px; /* 控制圆形大小，适应手机屏幕 */
+        height: 80px;
     }
 }
