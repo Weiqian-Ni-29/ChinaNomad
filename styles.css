@@ -77,8 +77,7 @@ header {
 
     .card {
         position: relative;
-        width: 100%;
-        max-width: 300px;
+        width: 250px;
         height: auto;
         border: 1px solid #ddd;
         border-radius: 5px;
