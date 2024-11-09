@@ -70,16 +70,13 @@ header {
 @media (max-width: 768px) {
     .cards-container {
         display: grid;
-        grid-template-columns: 1fr 1fr; /* 使用网格布局，每行 2 个卡片 */
+        grid-template-columns: 1fr 1fr; /* 每行两列，每列宽度为1fr */
         gap: 1em;
         padding: 1em;
     }
 
     .card {
         position: relative;
-        width: 100%;
-        max-width: 250px;
-        height: auto;
         border: 1px solid #ddd;
         border-radius: 5px;
         box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
@@ -87,6 +84,9 @@ header {
         background-color: white;
         cursor: pointer;
         transition: transform 0.2s;
+        padding-bottom: 1em;
+        height: auto;
+        width: 100%; /* 确保卡片充满网格单元 */
     }
 }
 
