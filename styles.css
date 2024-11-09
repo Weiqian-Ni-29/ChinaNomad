@@ -1,0 +1,167 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f9;
+}
+
+header {
+    background-color: #4CAF50;
+    color: white;
+    text-align: center;
+    padding: 1em 0;
+}
+
+.mpd-h2 {
+    text-align: center;
+    font-size: 2em;
+    margin-bottom: 1em;
+}
+
+.cards-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1em;
+    padding: 1em;
+    justify-content: center;
+}
+
+.card {
+    position: relative;
+    width: 250px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    background-color: white;
+    cursor: pointer;
+    transition: transform 0.2s;
+    padding-bottom: 1em;
+}
+
+.card:hover {
+    transform: scale(1.05);
+}
+
+.card img {
+    width: 100%;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+}
+
+.why-choose-us {
+    text-align: center;
+    padding: 2em;
+}
+
+.why-choose-us h2 {
+    font-size: 2em;
+    margin-bottom: 1em;
+}
+
+.icon img {
+    width: 100px;
+    height: 100px;
+    margin-bottom: 1em;
+    margin-top: 1em;
+}
+
+.card h3 {
+    font-size: 1.2em;
+    margin: 0.5em 0;
+}
+
+.card p {
+    color: #666;
+    font-size: 0.9em;
+    margin: 0.5em 0 1em;
+}
+
+.card a {
+    color: #333;
+    font-weight: bold;
+    text-decoration: none;
+    font-size: 0.9em;
+}
+
+.card a:hover {
+    text-decoration: underline;
+}
+
+.footer-text {
+    position: absolute;
+    bottom: 1em; /* 相对卡片底部 */
+    left: 50%;
+    transform: translateX(-50%);
+    color: #666;
+    font-size: 0.9em;
+}
+
+.travel-guide {
+    text-align: center;
+    padding: 2em 0;
+}
+
+.travel-guide h2 {
+    font-size: 2em;
+    margin-bottom: 1em;
+    color: #333;
+}
+
+.travel-guide p {
+    font-size: 1.5em;
+    color: #666;
+    font-style: oblique;
+}
+
+.circle-container {
+    justify-content: center;
+    display: flex;
+    gap: 2em;
+    scroll-behavior: smooth;
+    padding: 2em;
+    overflow-x: auto;
+}
+
+.circle-link {
+    padding: 2em;
+    text-align: center;
+    text-decoration: none;
+    color: #333;
+}
+
+.circle {
+    width: 200px;
+    height: 200px;
+    overflow: hidden;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s;
+}
+
+.circle img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.circle:hover {
+    transform: scale(1.05);
+}
+
+footer {
+    background-color: #333;
+    color: white;
+    text-align: center;
+    padding: 1em;
+    margin-top: 2em;
+}
+
+footer a {
+    color: #4CAF50;
+    text-decoration: none;
+    margin: 0 10px;
+}
