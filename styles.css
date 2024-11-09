@@ -70,7 +70,7 @@ header {
 @media (max-width: 768px) {
     .cards-container {
         display: grid;
-        grid-template-columns: 1fr 1fr; /* 每行两列，每列宽度为1fr */
+        grid-template-columns: repeat(2, minmax(0, 1fr)); /* 两列均匀分布 */
         gap: 1em;
         padding: 1em;
     }
@@ -86,7 +86,6 @@ header {
         transition: transform 0.2s;
         padding-bottom: 1em;
         height: auto;
-        width: 100%; /* 确保卡片充满网格单元 */
     }
 }
 
