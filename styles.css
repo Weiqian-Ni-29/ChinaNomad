@@ -216,8 +216,17 @@ header {
     }
 
     .circle {
-        width: 80px; /* 控制圆形大小，适应手机屏幕 */
-        height: 80px;
+        width: 80px;
+        max-width: 150px;
+        height: auto;
+        margin: 0 auto;
+        overflow: hidden;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        transition: transform 0.2s;
     }
 }
 
