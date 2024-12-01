@@ -3,7 +3,7 @@ body {
     font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
-    background-color: #fafafa;
+    background-color: #fdf7f7;
     justify-content: center;
     align-items: center;
     display: grid;
@@ -163,7 +163,7 @@ nav a:hover {
 .image-container {
     position: relative;
     width: 100%;
-    height: 200px;
+    height: 300px;
     overflow: hidden;
     border-radius: 10px 10px 0 0;
 }
