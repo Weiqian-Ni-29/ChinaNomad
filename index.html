@@ -1,13 +1,21 @@
 <!-- todo: 
-1. add payment area and social media link properly
-2. Add the cards like tripadvisor style, make them bigger
-3. Add a review section.
-4. Make it mobile friendly.
-5. Add the forms within the website after the payment  -- google form / tencent forms
+1. add payment area  -- paypal and Stripe for credit card payment. Use the business info from the travel agency.
+登录到您的 Stripe 仪表盘。
+导航到“支付链接”或“Payment Links”部分。
+点击“创建支付链接”按钮。
+按照提示设置产品名称、价格、货币等信息。
+完成设置后，Stripe 会生成一个唯一的支付链接, 添加进html。 如：
+<a href="https://buy.stripe.com/test_XXXXXXXXXXXX" target="_blank">立即支付</a>
+
+2. and social media link properly -- done
+3. Add the cards like tripadvisor style, make them bigger  -- done
+4. Add a review section.    --done
+5. Make it mobile friendly.
+6. Add the forms within the website after the payment  -- google form / tencent forms
     - forms should include: asking their diet perference
     - pickup or not
-    - bubble perference
-6. add email and whatsapp, instagram, wechat contact info at the bottom -->
+    - bubble tea perference
+7. add email and whatsapp, instagram, wechat contact info at the bottom -->
 
 <!DOCTYPE html>
 <html lang="en">
@@ -16,42 +24,273 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>China Nomad</title>
     <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
 <body>
-
     <header>
-        <h1>China Nomad</h1>
+        <div class="logo">
+            <img src="assets/china-nomad-logo.webp" alt="Logo">
+            <span>China Nomad</span>
+        </div>
+        <nav>
+            <a href="#discover">Discover</a>
+            <a href="#guide">Guide</a>
+            <a href="#review">Review</a>
+            <a href="#aboutus">About Us</a>
+        </nav>
     </header>
 
-    <h2 class="mpd-h2">Most Popular Destinations</h2>
-    <section class="cards-container">
-        <div class="card" onclick="location.href='the_bund.html'">
-            <img src="assets/the_bund_sh.jfif" alt="the bund">
-            <h2>Shanghai</h2>
-            <p>Description for the bund, Shanghai...</p>
-        </div>
+    <div class="separator"></div>
 
-        <div class="card" onclick="location.href='yu_garden.html'">
-            <img src="assets/yu_garden_sh.jpg" alt="yu garden">
-            <h2>Shanghai</h2>
-            <p>Description for the yu garden, Shanghai...</p>
+    <div class="big-enterance-card">
+        <img src="assets/chenghuangtempo-nightview-generated.webp" alt="entrance_card">
+        <div class="text-overlay">
+            <h2>Cheers to your Achievements</h2>
+            <p>We went, we reviewed, we reached milestones. See the big things we did together in 2024.</p>
         </div>
+    </div>
 
-        <div class="card" onclick="location.href='default.html'">
-            <img src="assets/defalut.png" alt="default">
-            <h2>Dummy city</h2>
-            <p>Dummy Description...</p>
+    <section class="more-to-explore">
+        <h2>More to explore</h2>
+        <div class="explore-cards">
+            <!-- Card 1 -->
+            <div class="explore-card"  onclick="location.href='xuhui-jingan.html'">
+                <div class="image-container">
+                    <img src="assets/chenghuangtempo-nightview-generated.webp" alt="jingan-temple">
+                </div>
+                <div class="card-description">
+                    <p>Explore XuHui-Jing'an, where modern vibes meet historic charm. Discover vibrant streets, local culture, and iconic landmarks</p>
+                </div>
+            </div>
+            <!-- Card 2 -->
+            <div class="explore-card">
+                <div class="image-container">
+                    <img src="https://via.placeholder.com/300x200" alt="Christmas Market">
+                </div>
+                <div class="card-description">
+                    <p>A first-timer's guide to Christmas market cruises</p>
+                </div>
+            </div>
+            <!-- Card 3 -->
+            <div class="explore-card">
+                <div class="image-container">
+                    <img src="https://via.placeholder.com/300x200" alt="Sydney">
+                </div>
+                <div class="card-description">
+                    <p>How to spend a perfect day in Sydney for less than $100</p>
+                </div>
+            </div>
         </div>
+    </section>
+    
+    <!-- <section id="discover">
+        <h2>Most Popular Destinations</h2>
+        <section class="cards-container">
+            <div class="card" onclick="location.href='xuhui-jingan.html'">
+                <img src="assets/jingantempo.jpg" alt="jingan-temple">
+                <h2>Shanghai</h2>
+                <p>Explore XuHui-Jing'an, where modern vibes meet historic charm. Discover vibrant streets, local culture, and iconic landmarks.</p>
+            </div>
+            <div class="card" onclick="location.href='the_bund.html'">
+                <img src="assets/the_bund_sh.jfif" alt="the bund">
+                <h2>Shanghai</h2>
+                <p>Description for the bund, Shanghai...</p>
+            </div>
 
-        <div class="card" onclick="location.href='default.html'">
-            <img src="assets/defalut.png" alt="default">
-            <h2>Dummy city</h2>
-            <p>Dummy Description...</p>
+            <div class="card" onclick="location.href='yu_garden.html'">
+                <img src="assets/yu_garden_sh.jpg" alt="yu garden">
+                <h2>Shanghai</h2>
+                <p>Description for the yu garden, Shanghai...</p>
+            </div>
+
+            <div class="card" onclick="location.href='default.html'">
+                <img src="assets/defalut.png" alt="default">
+                <h2>Dummy city</h2>
+                <p>Dummy Description...</p>
+            </div>
+        </section>
+    </section> -->
+
+    <section id="review">
+        <h2>Reviews</h2>
+        <div class="review">
+            <div class="review-header">Customer Voices</div>
+            <div class="review-list">
+                <div class="comment-card">
+                    <div class="user-info">
+                        <img src="https://via.placeholder.com/50" alt="User Avatar">
+                        <span class="user-name">Sarah Lee</span>
+                    </div>
+                    <div class="comment-content">
+                        The service was fantastic! The team really went above and beyond to make my trip enjoyable.
+                    </div>
+                    <div class="comment-rating">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="far fa-star"></i>
+                    </div>
+                </div>
+            
+                <div class="comment-card">
+                    <div class="user-info">
+                        <img src="https://via.placeholder.com/50" alt="User Avatar">
+                        <span class="user-name">James Brown</span>
+                    </div>
+                    <div class="comment-content">
+                        Amazing experience! The attention to detail and customer support were top-notch.
+                    </div>
+                    <div class="comment-rating">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star-half-alt"></i>
+                        <i class="far fa-star"></i>
+                    </div>
+                </div>
+            
+                <div class="comment-card">
+                    <div class="user-info">
+                        <img src="https://via.placeholder.com/50" alt="User Avatar">
+                        <span class="user-name">Olivia White</span>
+                    </div>
+                    <div class="comment-content">
+                        Good service overall. However, I felt the itinerary could have been more flexible.
+                    </div>
+                    <div class="comment-rating">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="far fa-star"></i>
+                    </div>
+                </div>
+            
+                <div class="comment-card">
+                    <div class="user-info">
+                        <img src="https://via.placeholder.com/50" alt="User Avatar">
+                        <span class="user-name">David Johnson</span>
+                    </div>
+                    <div class="comment-content">
+                        Truly an unforgettable journey! I would highly recommend this service to my friends and family.
+                    </div>
+                    <div class="comment-rating">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                </div>
+            
+                <div class="comment-card">
+                    <div class="user-info">
+                        <img src="https://via.placeholder.com/50" alt="User Avatar">
+                        <span class="user-name">Emily Carter</span>
+                    </div>
+                    <div class="comment-content">
+                        Everything was well-organized and smooth. The team handled all my requests promptly.
+                    </div>
+                    <div class="comment-rating">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star-half-alt"></i>
+                        <i class="far fa-star"></i>
+                    </div>
+                </div>
+
+                <div class="comment-card">
+                    <div class="user-info">
+                        <img src="https://via.placeholder.com/50" alt="User Avatar">
+                        <span class="user-name">Alice Smith</span>
+                    </div>
+                    <div class="comment-content">The service was exceptional! I enjoyed every moment of my trip.</div>
+                    <div class="comment-rating">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                </div>
+                <div class="comment-card">
+                    <div class="user-info">
+                        <img src="https://via.placeholder.com/50" alt="User Avatar">
+                        <span class="user-name">Alice Smith</span>
+                    </div>
+                    <div class="comment-content">The service was exceptional! I enjoyed every moment of my trip.</div>
+                    <div class="comment-rating">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                </div>
+                <div class="comment-card">
+                    <div class="user-info">
+                        <img src="https://via.placeholder.com/50" alt="User Avatar">
+                        <span class="user-name">John Doe</span>
+                    </div>
+                    <div class="comment-content">Good experience overall, but could use better customer support.</div>
+                    <div class="comment-rating">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="far fa-star"></i>
+                    </div>
+                </div>
+                <div class="comment-card">
+                    <div class="user-info">
+                        <img src="https://via.placeholder.com/50" alt="User Avatar">
+                        <span class="user-name">Emily Johnson</span>
+                    </div>
+                    <div class="comment-content">Absolutely loved the service. Will definitely recommend to friends!</div>
+                    <div class="comment-rating">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                </div>
+                <div class="comment-card">
+                    <div class="user-info">
+                        <img src="https://via.placeholder.com/50" alt="User Avatar">
+                        <span class="user-name">Michael Brown</span>
+                    </div>
+                    <div class="comment-content">Not bad, but the travel schedule felt a bit rushed.</div>
+                    <div class="comment-rating">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star-half-alt"></i>
+                        <i class="far fa-star"></i>
+                    </div>
+                </div>
+                <div class="comment-card">
+                    <div class="user-info">
+                        <img src="https://via.placeholder.com/50" alt="User Avatar">
+                        <span class="user-name">Sophia Davis</span>
+                    </div>
+                    <div class="comment-content">Great attention to detail and customer satisfaction!</div>
+                    <div class="comment-rating">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                </div>
+            </div>
         </div>
     </section>
 
-    <section class="why-choose-us">
-        <h2>Why ChinaWander?</h2> <!--   about us -->
+    <section id="aboutus" class="about-us">
+        <h2>About Us</h2>
         <div class="cards-container">
             <div class="card">
                 <div class="icon">
@@ -88,7 +327,7 @@
         </div>
     </section>
 
-    <section class="travel-guide">
+    <section id="guide" class="travel-guide">
         <h2>China Travel Guide</h2>
         <div class="circle-container">
             <a href="things.html" class="circle-link">
@@ -126,17 +365,31 @@
 
     <footer>
         <!-- 社交媒体链接 -->
-        <div class="social-media">
-            <a href="https://www.instagram.com" target="_blank">Instagram</a>
-            <a href="https://www.facebook.com" target="_blank">Facebook</a>
-            <a href="https://www.x.com" target="_blank">X</a>
+        <div class="social-media-container">
+            <h3>Follow us on social media</h3>
+            <div class="social-icons">
+                <!-- Facebook链接 -->
+                <a href="https://www.facebook.com/" target="_blank" title="Facebook">
+                    <img class="social-logo-image" src="assets/facebook_logo.png" alt="Facebook">
+                </a>
+                <!-- Instagram链接 -->
+                <a href="https://www.instagram.com/" target="_blank" title="Instagram">
+                    <img class="social-logo-image" src="assets/Instagram_logo_2016.svg.png" alt="Instagram">
+                </a>
+                <!-- X (Twitter)链接 -->
+                <a href="https://x.com/" target="_blank" title="X">
+                    <img class="social-logo-image" src="assets/x_logo-white.png" alt="X">
+                </a>
+            </div>
         </div>
 
-        <!-- 付款方式链接 -->
-        <div class="payment-methods">
+        
+
+        <!-- 付款方式链接：to be done -->
+        <!-- <div class="payment-methods">
             <a href="https://www.paypal.com" target="_blank">PayPal</a>
             <a href="https://www.visa.com" target="_blank">Credit Card</a>
-        </div>
+        </div> -->
     </footer>
 
 </body>
