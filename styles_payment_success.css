@@ -1,0 +1,115 @@
+body {
+    margin: 0;
+    padding-top: 5em; /* 留出 header 的高度 */
+    background-color: #fafafa;
+    font-family: Arial, sans-serif;
+}
+
+section {
+    margin-top: 1em;
+}
+
+.separator {
+    height: 3em;
+}
+/* top nav bar */
+header {
+    display: flex;
+    flex-direction: column; /* 垂直排列 */
+    align-items: center;
+    justify-content: center;
+    padding: 10px 20px;
+    background-color: #fdfbe9;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 1000;
+    height: 5em;
+}
+
+.logo {
+    position: absolute;
+    left: 1em;
+    display: flex;
+    align-items: center;
+}
+
+h2 {
+    margin: 0; /* 清除默认外边距 */
+    padding: 0.5em 0; /* 调整顶部和底部的内边距 */
+    text-align: center;
+    font-size: 1.5em;
+}
+
+.logo img {
+    height: 4em;
+    margin-right: 10px;
+    border-radius: 50%;
+}
+
+.logo span {
+    font-size: 2em;
+    font-weight: bold;
+    color: #222;
+}
+
+footer {
+    background-color: #333;
+    color: white;
+    text-align: center;
+    padding: 1em;
+    margin-top: 2em;
+    width: 100%; /* 占据屏幕的全部宽度 */
+    box-sizing: border-box; /* 确保 padding 不会影响宽度 */
+}
+
+footer a {
+    color: #4CAF50;
+    text-decoration: none;
+    margin: 0 10px;
+}
+
+footer {
+    background-color: #333;
+    color: white;
+    text-align: center;
+    padding: 1em;
+    margin-top: 2em;
+    width: 100%; /* 占据屏幕的全部宽度 */
+    box-sizing: border-box; /* 确保 padding 不会影响宽度 */
+}
+
+footer a {
+    color: #4CAF50;
+    text-decoration: none;
+    margin: 0 10px;
+}
+
+/* social media icons */
+.social-media-container {
+    text-align: center;
+}
+
+.social-icons {
+    display: flex;
+    justify-content: center;
+    gap: 1em;
+    margin-top: 1em;
+    margin-bottom: 1em;
+}
+
+.social-icons a {
+    text-decoration: none;
+    color: #555;
+    font-size: 40px;
+    transition: color 0.3s ease;
+}
+.social-icons a:hover {
+    color: #000;
+}
+
+.social-logo-image {
+    width: 1em;
+    height: 1em;
+}

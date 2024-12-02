@@ -3,8 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>China Nomad</title>
+    <title>SiNomad</title>
     <link rel="stylesheet" href="styles_xuhui_jingan.css">
+    <script src="https://www.paypal.com/sdk/js?client-id=YOUR_CLIENT_ID"></script>
 </head>
 
 <body>
@@ -12,7 +13,7 @@
     <header>
         <div class="logo">
             <img src="assets/china-nomad-logo.webp" alt="Logo">
-            <span>China Nomad</span>
+            <span>SiNomad</span>
         </div>
         <h2>Xuhui - Jingan city walk</h2>
     </header>
@@ -22,6 +23,42 @@
         <div>
             
         </div>
+    </section>
+
+    <section>
+        <h2>Payment options</h2>
+        <div style="display: flex; justify-content: center; align-items: center;">
+            <button onclick="location.href='payment-success.html'" style="text-align: center; margin: 20px;">Paypal</button>
+            <button onclick="location.href='payment-success.html'" style="text-align: center; margin: 20px;;">Credit card</button>
+        </div>
+        <div id="paypal-button-container"></div>
+        <script>
+            paypal.Buttons({
+                // 创建订单
+                createOrder: (data, actions) => {
+                return actions.order.create({
+                    purchase_units: [{
+                    amount: { value: '10.00' } // 金额
+                    }]
+                });
+                },
+                // 处理支付成功
+                onApprove: (data, actions) => {
+                return actions.order.capture().then(details => {
+                    // 如果支付成功，跳转到成功页面
+                    window.location.href = "success.html";
+                });
+                },
+                // 处理支付失败或用户取消
+                onCancel: (data) => {
+                alert("Payment canceled or failed. Please try again.");
+                },
+                onError: (err) => {
+                console.error("Error occurred during payment: ", err);
+                alert("An error occurred. Please try again.");
+                }
+            }).render('#paypal-button-container');
+        </script>
     </section>
 
 
@@ -36,7 +73,7 @@
                     <img class="social-logo-image" src="assets/facebook_logo.png" alt="Facebook">
                 </a>
                 <!-- Instagram链接 -->
-                <a href="https://www.instagram.com/" target="_blank" title="Instagram">
+                <a href="https://www.instagram.com/china__nomad1124/" target="_blank" title="Instagram">
                     <img class="social-logo-image" src="assets/Instagram_logo_2016.svg.png" alt="Instagram">
                 </a>
                 <!-- X (Twitter)链接 -->
