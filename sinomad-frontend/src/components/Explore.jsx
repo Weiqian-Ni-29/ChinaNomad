@@ -21,6 +21,7 @@ function Explore() {
               <img src={dummypic} alt="jingan-temple" />
             </div>
             <div className="card-description">
+              <h4>A City Walk Through the Former French Concession</h4>
               <p>
                 Explore XuHui-Jing'an, where modern vibes meet historic charm.
                 Discover vibrant streets, local culture, and iconic landmarks
@@ -35,6 +36,7 @@ function Explore() {
               />
             </div>
             <div className="card-description">
+            <h4>Place holder</h4>
               <p>A first-timer's guide to Christmas market cruises</p>
             </div>
           </div>
@@ -43,6 +45,7 @@ function Explore() {
               <img src="https://via.placeholder.com/300x200" alt="Sydney" />
             </div>
             <div className="card-description">
+            <h4>Place holder</h4>
               <p>How to spend a perfect day in Sydney for less than $100</p>
             </div>
           </div>

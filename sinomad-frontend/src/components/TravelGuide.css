@@ -1,6 +1,7 @@
 .travel-guide {
     text-align: center;
     padding: 2em 0;
+    background-color: bisque;
 }
 
 .travel-guide p {
@@ -87,53 +88,12 @@
 }
 
 .saying {
-    position: relative;
-    overflow: hidden;
-    justify-self: center;
-    width: 100%;
+    padding-top: 2em;
+    font-weight: 300;
 }
 
-.saying img {
-    width: 70%;
-}
-
-.text {
-    position: absolute; /* 使文字层能够相对于 .saying 定位 */
-    top: 50%; /* 垂直居中 */
-    left: 50%; /* 水平居中 */
-    transform: translate(-50%, -50%); /* 完全居中 */
-    text-align: center;
-}
-
-.text h3 {
-    font-size: 2.3em;
-    margin: 10px 0;
-    font-family:cursive;
-}
-
-.name {
-    font-size: 2em;
-    position: absolute;
-    top:70%;
-    left:65%;
-    font-family: cursive;
-}
-
-
-/* 小屏幕（如手机）的样式 */
-@media (max-width: 768px) {
-    .text h3 {
-        font-size: 1.3em;
-        margin: 10px 0;
-        font-family:cursive;
-    }
-    
-    .name {
-        font-size: 1em;
-        position: absolute;
-        top:70%;
-        left:65%;
-        font-family: cursive;
-    }
-    
+.ford {
+    text-align: right;
+    padding-right: 25%;
+    font-weight: 300;
 }

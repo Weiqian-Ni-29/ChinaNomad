@@ -1,18 +1,14 @@
 .about-us {
     display: block; /* 改为 block，确保它占满父容器宽度 */
-    padding: 1em 2em;
     width: 100%;
 }
 
 .aboutus-intro {
     position: relative;
-    max-width: 60%; /* 限制最大宽度 */
-    margin: 0 auto; /* 水平居中 */
     display: flex;
     flex-direction: column; /* 如果有多个子元素，可以设置垂直排列 */
-    background-image: url('../assets/imgs/flower-background.webp');
+    background-color: bisque;
     padding: 4em;
-    border-radius: 4em;
 }
 
 .aboutus-intro p {

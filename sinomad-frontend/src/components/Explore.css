@@ -39,10 +39,17 @@
     border-radius: 10px;
 }
 
-.card-description p {
+.card-description h4 {
     font-size: 1em;
+    padding-top: 0;
+    margin-top: 0;
+}
+
+.card-description p {
+    font-size: 0.9em;
     line-height: 1.5em;
     font-weight: 600;
+    text-align: left;
 }
 
 /* 小屏幕（如手机）的样式 */

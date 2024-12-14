@@ -1,15 +1,14 @@
 /* big enterance picture */
 .big-enterance-card {
     position: relative;
-    width: 60%;
+    width: 100%;
     display: inline-block;
     background-color: #fff;
-    border-radius: 15px;
     overflow: hidden;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
     justify-self: center;
     margin-bottom: 0px;
-    margin-top: 20px;
+    max-height: 300px;
 }
 
 .big-enterance-card img {

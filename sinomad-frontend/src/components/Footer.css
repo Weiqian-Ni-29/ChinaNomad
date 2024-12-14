@@ -42,3 +42,7 @@ footer a {
     height: 1em;
     border-radius: 5px;
 }
+
+i {
+    cursor: pointer;
+}
