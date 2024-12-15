@@ -1,6 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const { Pool } = require('pg');
+const dayjs = require('dayjs');
 
 // 创建一个新的 PostgreSQL 客户端实例
 const pool = new Pool({
@@ -24,9 +25,10 @@ async function connectAndQuery(query) {
   try {
     // 执行查询
     const res = await client.query(query);
-    console.log(res.rows);  // 查询结果
+    return res;
   } catch (err) {
     console.error('Error executing query', err.stack);
+    return null;
   }
 }
 
@@ -39,16 +41,17 @@ async function closeConnection() {
   }
 }
 
-// 可选日期集合
-const availableDates = [
-  '2024-12-10',
-  '2024-12-12',
-  '2024-12-15',
-];
-
 // 获取可选日期集合
-router.get('/available-dates', (req, res) => {
-  res.json(availableDates);
+router.get('/available-dates-n-vacancies', async (req, res) => {
+  const availableDateNVacancies = await connectAndQuery("select departure_time, (6 - num_of_travelers) as vacant_slots from bookinginfo where route = 'xujiahui-jingan' and num_of_travelers < 6 and departure_time <= (now() + interval '1 month')::date;");
+  const departureTimes = availableDateNVacancies.rows.map(row => row.departure_time);
+  const vacantSlots = availableDateNVacancies.rows.map(row => row.vacant_slots);
+  console.log(departureTimes);
+  console.log(vacantSlots);
+  res.json({
+    departureTimes: departureTimes,
+    vacantSlots: vacantSlots
+  });
 });
 
 // 提交选定日期
@@ -65,14 +68,20 @@ router.post('/submit-booking', (req, res) => {
 
 // 用户个人信息
 router.post('/submit-userinfo', async (req, res) => {
-  const { name, email, phone } = req.body;
-  if (!name || !email || !phone) {
-    return res.status(400).json({ message: 'name, email and phone number are required.' });
+  const { name, email, phone, amount_paid, travelers, travel_date } = req.body;
+  console.log('Received data:', req.body);
+  if (!name || !email || !phone || !amount_paid || !travelers || !travel_date) {
+    return res.status(400).json({ message: 'some vital data fields of the transaction are missing.' });
   }
-  console.log(`'Received user info: name -  ${name}, email - ${email}, phone - ${phone}'`);
+  const parsedDate = dayjs(travel_date.$d);
+  if (!parsedDate.isValid()) {
+    return res.status(400).json({ message: 'Invalid travel_date format.' });
+  }
+  const formattedDate = parsedDate.format('YYYY-MM-DD');
+  console.log(`'Received user info: name -  ${name}, email - ${email}, phone - ${phone}, travelers - ${travelers}, travel_date - ${formattedDate}, amount_paid - ${amount_paid}'`);
   res.json({ message: 'user info received successfully' });
-  await connectAndQuery("insert into userinfo (name, age, email, phone, travel_date, paid) values('" + name + "',null, '" + email + "', '" +phone + "', '2024-01-15', true);");
-  await connectAndQuery('select * from userinfo;');
+  await connectAndQuery("insert into userinfo (name, age, email, phone, travel_date, travelers, route, paid, amount_paid, transaction_time) values('" + name + "',null, '" + email + "', '" + phone + "', '"+ formattedDate +"' ," + travelers + ", 'xujiahui-jingan', true, " + amount_paid + ",now());");
+  await connectAndQuery("update bookinginfo set num_of_travelers = num_of_travelers + " + travelers + " where departure_time='"+ formattedDate +"' and route = 'xujiahui-jingan'");
 });
 
 module.exports = router;

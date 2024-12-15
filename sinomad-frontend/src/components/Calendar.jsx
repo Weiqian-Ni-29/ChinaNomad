@@ -1,28 +1,37 @@
 import React, { useState, useEffect } from 'react';
 import { LocalizationProvider, DatePicker } from '@mui/x-date-pickers';
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
-import dayjs from 'dayjs';
 import axios from 'axios';
+import dayjs from 'dayjs';
 
-function Calendar({ selectedDate, setSelectedDate }) {
+function Calendar({ selectedDate, setSelectedDate, setCurrentSlot, setSelectedNumber }) {
   const [availableDates, setAvailableDates] = useState([]);
+  const [availableSlots, setAvailableSlots] = useState([]);
+  // const [currentSlot, setCurrentSlot] = useState(null);
 
   useEffect(() => {
-    const fetchAvailableDates = async () => {
+    const fetchAvailableDatesNSlots = async () => {
       try {
-        const response = await axios.get('http://localhost:5000/api/available-dates');
-        const dates = response.data.map((date) => dayjs(date));
-        setAvailableDates(dates);
+        const response = await axios.get('http://localhost:5000/api/available-dates-n-vacancies');
+        const { departureTimes, vacantSlots } = response.data;
+        const dayjsDepartureTimes = departureTimes.map(time => dayjs(time));
+        setAvailableDates(dayjsDepartureTimes);
+        setAvailableSlots(vacantSlots);
       } catch (error) {
         console.error('获取可选日期失败:', error);
       }
     };
 
-    fetchAvailableDates();
+    fetchAvailableDatesNSlots();
   }, []);
 
   const handleDateChange = (newValue) => {
     setSelectedDate(newValue);
+    const index = availableDates.findIndex((availableDate) =>
+      availableDate.isSame(newValue, 'day')
+    );
+    setCurrentSlot(availableSlots[index] || null);
+    setSelectedNumber(0);
   };
 
   const isDateAvailable = (date) => {
@@ -31,7 +40,8 @@ function Calendar({ selectedDate, setSelectedDate }) {
 
   return (
     <LocalizationProvider dateAdapter={AdapterDayjs}>
-      <div style={{ padding: '20px', maxWidth: '400px', margin: '0 auto' }}>
+    {/* {currentSlot === null ? <></> : <h3>Vacanies {currentSlot}</h3>} */}
+      <div style={{paddingBottom: '20px', maxWidth: '400px', margin: '0 auto' }}>
         <DatePicker
           label="Sinomad Trip"
           value={selectedDate}

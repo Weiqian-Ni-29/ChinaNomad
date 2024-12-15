@@ -4,15 +4,19 @@ import Calendar from './Calendar';
 import Button from '@mui/material/Button';
 import { useNavigate } from 'react-router-dom';
 
-function BookingForm() {
+function BookingForm({ price }) {
   const navigate = useNavigate();
   const [selectedNumber, setSelectedNumber] = useState('');
   const [selectedDate, setSelectedDate] = useState(null);
+  const [currentSlot, setCurrentSlot] = useState(null);
 
   // 日期和剩余人数检查通过后跳转到付款页面
   const handleJumpPaymentPage = (event) => {
-    // event.stopPropagation();
-    navigate('/Payment');
+    if (selectedDate === null || selectedNumber === null || selectedNumber === 0 || selectedNumber > 6) {
+      alert('date or number of people not selected properly, please try again');
+      return;
+    }
+    navigate('/Payment', { state: { selectedNumber, price, selectedDate } });
   };
 
   const handleSubmit = async () => {
@@ -20,7 +24,7 @@ function BookingForm() {
       alert('Please choose a date before submission');
       return;
     }
-    if (!selectedNumber) {
+    if (!selectedNumber || selectedNumber > 6 || selectedNumber <= 0) {
       alert('Please select the number of travelers before submission');
       return;
     }
@@ -39,9 +43,8 @@ function BookingForm() {
 
       if (response.ok) {
         const data = await response.json();
+        console.log(data);
         handleJumpPaymentPage();
-        // alert(`Server response: ${data.message}`);
-
       } else {
         alert('Booking submission failed, please try again');
       }
@@ -53,13 +56,16 @@ function BookingForm() {
 
   return (
     <div>
-      <ClientNumberPicker
-        selectedNumber={selectedNumber}
-        setSelectedNumber={setSelectedNumber}
-      />
       <Calendar
         selectedDate={selectedDate}
         setSelectedDate={setSelectedDate}
+        setCurrentSlot={setCurrentSlot}
+        setSelectedNumber={setSelectedNumber}
+      />
+      <ClientNumberPicker
+        selectedNumber={selectedNumber}
+        setSelectedNumber={setSelectedNumber}
+        currentSlot={currentSlot}
       />
       <Button
         variant="contained"
