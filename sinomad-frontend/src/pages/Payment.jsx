@@ -14,6 +14,14 @@ function validateEmail(email) {
     return emailRegex.test(email);
 }
 
+function validPhoneNumber(phoneNumber) {
+    // 去除字符串中的空格和加号
+    const cleaned = phoneNumber.replace(/[\s+]/g, '');
+    // 检查清理后的字符串是否仅包含数字，并且长度在10到15之间
+    const isNumeric = /^\d{10,15}$/.test(cleaned);
+    return isNumeric;
+}
+
 function Payment() {
     const location = useLocation();
     const { selectedNumber, price, selectedDate } = location.state || {};
@@ -37,8 +45,8 @@ function Payment() {
             alert('Please make sure all the fields in the form are correctly filled.');
             return;
         }
-        if (!validateEmail(inputs.email)) {
-            alert('The format of email is incorrect, please try again.');
+        if (!validateEmail(inputs.email) || !validPhoneNumber(inputs.phone)) {
+            alert('The format of email or phone is incorrect, please try again.');
             return;
         }
 
@@ -60,16 +68,17 @@ function Payment() {
             });
       
             if (response.ok) {
-              const data = await response.json();
-              navigate('/PaymentSuccess');
-              console.log(`Server response: ${data.message}`);
-            } else {
-              alert('Payment not successful, please try again.');
+                const data = await response.json();
+                console.log(`Server response: ${data.message}`);
+                navigate('/PaymentSuccess');
+              } else {
+                const errorData = await response.json();
+                alert(`Payment not successful: ${errorData.message}`);
+              }
+            } catch (error) {
+              console.error('Error while submitting the booking:', error);
+              alert("Something's wrong, please try again.");
             }
-          } catch (error) {
-            console.error('Error while submitting the booking:', error);
-            alert("Something's wrong, please try again.");
-          }
     }
 
     return(
